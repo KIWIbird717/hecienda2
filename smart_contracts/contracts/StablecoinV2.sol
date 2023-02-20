@@ -6,16 +6,14 @@ import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 
-contract Hacienda is Initializable, ERC20Upgradeable, OwnableUpgradeable, UUPSUpgradeable {
+contract HaciendaV2 is Initializable, ERC20Upgradeable, OwnableUpgradeable, UUPSUpgradeable {
     /// @custom:oz-upgrades-unsafe-allow constructor
-    /// @custom:security-contact https://hacienda.tech
-
     constructor() {
         _disableInitializers();
     }
 
     function initialize() initializer public {
-        __ERC20_init("usdt token", "usdt");
+        __ERC20_init("Stablecoin", "stk");
         __Ownable_init();
         __UUPSUpgradeable_init();
 
@@ -28,12 +26,18 @@ contract Hacienda is Initializable, ERC20Upgradeable, OwnableUpgradeable, UUPSUp
         override
     {}
 
-    function _beforeTokenTransfer(address from, address to, uint256 amount)
+        function _beforeTokenTransfer(address from, address to, uint256 amount)
         internal
         override
     {
         super._beforeTokenTransfer(from, to, amount);
         
     }
+
+
+    function mint(address to, uint256 amount) public onlyOwner {
+        _mint(to, amount);
+    }
+
 
 }
