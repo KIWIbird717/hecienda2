@@ -17,6 +17,7 @@ import { Web3Modal } from "@web3modal/react";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { arbitrum, bsc, mainnet, polygon } from "wagmi/chains";
 import { Web3Button } from "@web3modal/react";
+import {getToken} from "./blockchain/vesting"
 
 
 const theme = createTheme({
@@ -70,6 +71,9 @@ function App() {
   const EnableBodyScroll = () => {
     document.body.style.overflow = "visible"
   }
+  console.log(provider.bind)
+
+  console.log(getToken(provider, "0x10a699481b08cd944995fdb1F92ae99097666890"))
 
 
   return (
