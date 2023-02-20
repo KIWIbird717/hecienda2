@@ -8,6 +8,15 @@ import { AnimatePresence } from 'framer-motion';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Fab from '@mui/material/Fab';
 import DataSaverOffRoundedIcon from '@mui/icons-material/DataSaverOffRounded';
+import {
+  EthereumClient,
+  modalConnectors,
+  walletConnectProvider,
+} from "@web3modal/ethereum";
+import { Web3Modal } from "@web3modal/react";
+import { configureChains, createClient, WagmiConfig } from "wagmi";
+import { arbitrum, bsc, mainnet, polygon } from "wagmi/chains";
+import { Web3Button } from "@web3modal/react";
 
 
 const theme = createTheme({
@@ -34,6 +43,24 @@ function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [panel, setPanel] = useState(false)
 
+  const chains = [bsc];
+  const { provider } = configureChains(chains, [
+    walletConnectProvider({ projectId: "a13ba38e6355e1943c13f06668fff534" }),
+  ]);
+
+  const wagmiClient = createClient({
+    autoConnect: true,
+    connectors: modalConnectors({
+      projectId: "a13ba38e6355e1943c13f06668fff534",
+      version: "1",
+      appName: "web3Modal",
+      chains,
+    }),
+    provider,
+  });
+
+  const ethereumClient = new EthereumClient(wagmiClient, chains);
+
   useEffect(() => {
     window.addEventListener('resize', () => {
       setWindowWidth(window.innerWidth)
@@ -47,6 +74,14 @@ function App() {
 
   return (
     <>
+    <WagmiConfig client={wagmiClient}>
+    <Web3Modal
+      projectId="a13ba38e6355e1943c13f06668fff534"
+      ethereumClient={ethereumClient}
+    />
+    <div className='fixed top-0 left-0'>
+      <Web3Button />;
+    </div>
     <ThemeProvider theme={theme}>
       <AnimatePresence>
         <SwipeableDrawer 
@@ -87,7 +122,7 @@ function App() {
           <Grid item xs={windowWidth < 1100 ? 12 : 9}>
             <Banner />
             <Statistics title='Vesting statistics'/>
-            <Statistics title='Stacking statistics'/>
+            {/* <Statistics title='Stacking statistics'/> */}
             <PromCard />
           </Grid>
           <Grid item xs={windowWidth < 1100 ? 0 : 3}>
@@ -113,6 +148,7 @@ function App() {
       </div>
       <div className='max-[860px]:h-[240px] h-[320px] bg-[#D6EAB0] w-full absolute top-0 left-0 z-[-1]'/>
       </ThemeProvider>
+      </WagmiConfig>
     </>
   );
 }

@@ -4,6 +4,7 @@ import { Button } from '@mui/material'
 import { useState, useEffect } from 'react'
 import walletSvg from '../media/wallet.svg'
 import stacking from '../media/stacking.svg'
+import { Tooltip } from '@mui/material';
 
 const dummy = [
   {
@@ -11,18 +12,21 @@ const dummy = [
     title: 'Buy Hecienda tokens',
     paragraph: 'Purchase our tokens to work with the Hecienda service',
     image: walletSvg,
+    button: true,
   },
   {
     id: 2,
     title: 'Invest tokents for vesting',
     paragraph: 'Earn passive income in the form of rewards while keeping crypto assets safe',
     image: stacking,
+    button: true,
   },
   {
     id: 3,
     title: 'Invest tokents for stacking',
     paragraph: 'Earn passive income in the form of rewards while keeping crypto assets safe',
     image: stacking,
+    buttin: false,
   },
 ]
 
@@ -58,7 +62,11 @@ export const PromCard = () => {
                   <h3 className='text-[22px] mb-[10px]'>{item.title}</h3>
                   <h5 className='text-[#888]'>{item.paragraph}</h5>
                 </div>
-                <Button sx={{ width: 'fit-content', padding: '10px 50px', color: 'white' }} color='primary' variant="contained">Withdraw</Button>
+                {item.button ? (
+                  <Button sx={{ width: 'fit-content', padding: '10px 50px', color: 'white' }} color='primary' variant="contained">Withdraw</Button>
+                ) : (
+                  <Button disabled sx={{ width: 'fit-content', padding: '10px 50px', color: 'white' }} color='primary' variant="contained">Withdraw</Button>
+                )}
               </div>
             </div>
           </Grid>

@@ -8,26 +8,26 @@ const dummy = [
   {
     id: 1,
     title: 'In day',
-    info: '+42.03',
+    info: '$42.03',
     latestInfo: '15.47%'
   },
   {
     id: 2,
     title: 'Available',
     info: '$507.3',
-    latestInfo: '$15.47'
+    latestInfo: '15.47%'
   },
   {
     id: 3,
     title: 'Earned funds',
     info: '$1 203',
-    latestInfo: '$15.47'
+    latestInfo: '15.47%'
   },
   {
     id: 4,
     title: 'Originally invested',
     info: '$140 027',
-    latestInfo: '$15.47'
+    latestInfo: '100%'
   },
 ]
 

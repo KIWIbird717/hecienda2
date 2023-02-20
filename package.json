@@ -13,6 +13,8 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@web3modal/ethereum": "^2.1.1",
+    "@web3modal/react": "^2.1.1",
     "copy-to-clipboard": "^3.3.3",
     "formic": "^0.0.10",
     "framer-motion": "^9.0.2",
@@ -20,6 +22,7 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "scroll-lock": "^2.1.5",
+    "wagmi": "^0.11.5",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },
