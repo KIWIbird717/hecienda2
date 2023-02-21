@@ -3,14 +3,14 @@
   "proxies": [
     {
       "address": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
-      "txHash": "0xccb702cf7824a0179a533f64909d5b1b3fc724bd952c9d431919681e2b5d18f2",
+      "txHash": "0xfc7168dcd70ee5eae2abb472bcba41db4bd9f15659aa8b605cf3e9a8bc8c55f9",
       "kind": "uups"
     }
   ],
   "impls": {
-    "1f5012c16ae19ea641016ee9e92822519f454d51b43ec03a3d86e487f3f95930": {
+    "1fda069d4f5825a59c9a0c61f4b11c59cf5245dd3de8d34f2e32f5b102b09961": {
       "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
-      "txHash": "0x94e8b66bc2ad7eaadcdde8295e4fa867438adba02b842d9d2cacc8fda95b357a",
+      "txHash": "0x6db1531dd94ad5beff10100a88564684ac40d003d1c38d25b77e6ba8c258cd6c",
       "layout": {
         "solcVersion": "0.8.17",
         "storage": [

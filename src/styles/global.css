@@ -43,7 +43,7 @@ h6 {
   font-family: 'Inter', sans-serif;
   color: rgba(0, 0, 40, 0.75);
 }
-h7 {
+.h7 {
   font-size: 36px;
   font-family: 'Inter', sans-serif;
   color: rgba(0, 0, 40, 0.75);
@@ -76,7 +76,7 @@ h7 {
   h6 {
     font-size: 9px;
   }
-  h7 {
+  .h7 {
     font-size: 30px;
   }
 }

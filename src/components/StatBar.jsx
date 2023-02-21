@@ -12,7 +12,7 @@ export const StatBar = ({openAllTransactions, pieChart, shadow}) => {
 
   return (
     <div
-      className={`max-w-[440px] w-full rounded-[10px] bg-white ${shadow} p-[15px] overflow-hidden flex flex-col justify-between`}
+      className={`max-w-[440px] w-full rounded-[10px] bg-white ${shadow} p-[15px] overflow-hidden overflow-y-scroll no-scroll-bar flex flex-col justify-between`}
     >
       <div>
         <h3 className='leading-[26px] font-semibold'>Balance usage</h3>
@@ -24,7 +24,7 @@ export const StatBar = ({openAllTransactions, pieChart, shadow}) => {
           <div className='max-[1350px]:h-[200px] absolute top-[0px] w-full h-[255px] flex flex-col items-center justify-center z-[2]'>
             <div className='max-[1615px]:h-[100px] h-[130px] flex flex-col items-center justify-between'>
               <div className='w-[30px] h-[30px] rounded-[50%] bg-[#999] flex justify-center items-center font-bold mb-[5px]'>H</div>
-              <h7 className='font-bold'>$15 300</h7>
+              <h3 className='h7 font-bold'>$15 300</h3>
               <h4 className='text-[#4FBB33] font-semibold'>+42%</h4>
             </div>
           </div>
