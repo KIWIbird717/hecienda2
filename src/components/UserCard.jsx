@@ -10,7 +10,7 @@ import copy from 'copy-to-clipboard'
 export const UserCard = ({style, shadow}) => {
   const userBalance = 503
   const [tootipOpen, setTooltipOpen] = useState(false)
-  const [userWalletId, setUserWalletId] = useState('0x1B73F3b984659C62D49D8b9b6Ccb510d9eD96b03')
+  const [userWalletId] = useState('0x1B73F3b984659C62D49D8b9b6Ccb510d9eD96b03')
 
   const setToolTip = () => {
     setTooltipOpen(true)

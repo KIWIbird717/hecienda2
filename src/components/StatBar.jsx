@@ -43,7 +43,7 @@ export const StatBar = ({openAllTransactions, pieChart, shadow}) => {
           <h4 className='font-regular'>Available for withdraw</h4>
         </div>
         <div>
-          <Button sx={{ width: '100%', padding: '10px 10px', color: 'white' }} color='primary' variant="contained"><h4 className='text-white'>Withdraw funds</h4></Button>
+          <Button onClick={() => console.log('hello')} sx={{ width: '100%', padding: '10px 10px', color: 'white' }} color='primary' variant="contained"><h4 className='text-white'>Withdraw funds</h4></Button>
         </div>
       </div>
 

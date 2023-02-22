@@ -9,6 +9,9 @@ import { configureChains, createClient, WagmiConfig } from "wagmi"
 import { bsc } from "wagmi/chains"
 import { Web3Button } from "@web3modal/react"
 import { useWeb3ModalTheme } from "@web3modal/react";
+import { getToken, getTotalAmount, getBeneficiary, getVestStartTimestamp } from './blockchain/vesting'
+import { useSelector, useDispatch } from 'react-redux'
+import { Button } from '@mui/material'
 
 
 function App() {
@@ -16,10 +19,8 @@ function App() {
   const { provider } = configureChains(chains, [
     walletConnectProvider({ projectId: "a13ba38e6355e1943c13f06668fff534" }),
   ]);
-  const { theme, setTheme } = useWeb3ModalTheme();
-
-  // Web3 modals theme
-
+  const { setTheme } = useWeb3ModalTheme();
+  console.log(provider)
 
   const wagmiClient = createClient({
     autoConnect: true,
@@ -31,7 +32,6 @@ function App() {
     }),
     provider,
   })
-  console.log(wagmiClient)
 
   setTheme({
     themeMode: "light",
@@ -41,6 +41,17 @@ function App() {
 
   const etherClient = new EthereumClient(wagmiClient, chains);
 
+  // CONTRACT DATA
+  // console.log(wagmiClient.storage.getItem('store').state.data.account)
+  // console.log(wagmiClient)
+  // console.log(getToken(wagmiClient.provider, "0x10a699481b08cd944995fdb1F92ae99097666890"))
+  // console.log(getBeneficiary(wagmiClient.provider, "0x10a699481b08cd944995fdb1F92ae99097666890"))
+  console.log(getVestStartTimestamp(wagmiClient.provider, "0x10a699481b08cd944995fdb1F92ae99097666890"))
+  const totalAmountHandler = () => { 
+
+  }
+
+
   return (
     <>
       <Web3Modal
@@ -49,10 +60,11 @@ function App() {
       />
       <div className='fixed'>
         <Web3Button />
+        <Button color='primary' variant="contained" onClick={() => totalAmountHandler}>get</Button>
       </div>
-      <WagmiConfig client={wagmiClient}>
+      <WagmiConfig onConnect={() => console.log()} client={wagmiClient}>
 
-        <Main/>
+        <Main />
 
       </WagmiConfig>
     </>
