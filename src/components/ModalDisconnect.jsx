@@ -27,7 +27,7 @@ export const ModalDisconnect = ({ closeModalDisconnect }) => {
       <ClickAwayListener onClickAway={closeModalDisconnect}>
         <motion.div className="w-[330px] h-[380px] bg-white rounded-[10px] py-[50px] px-[30px] flex flex-col items-center justify-center">
           <motion.h3 className='font-semibold text-center mb-[25px]'>Disconnect from session?</motion.h3>
-          <motion.h5 className="text-center mb-[25px]">Are you sure you want to disconnect from this session. You can come back anytime.</motion.h5>
+          <motion.h5 className="text-center mb-[25px]">Are you sure you want to disconnect from this session? You can come back anytime.</motion.h5>
           <motion.div className="flex">
             <Button onClick={closeModalDisconnect} sx={{ width: '110px', padding: '8px 10px', color: 'white', margin: '10px 8px' }} color='primary' variant="outlined"><h4 className="text-black text-[0.875rem]">Cancel</h4></Button>
             <Disconnect />

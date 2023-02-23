@@ -5,17 +5,25 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import { useAccount } from 'wagmi';
 import { useBalance } from 'wagmi'
+import { useState, useEffect } from 'react'
+
 
 
 export const UserCard = ({openModal, style, shadow}) => {
-  const userBalance = 503
-
+  const [balance, setBalance] = useState()
   const { address } = useAccount()
   const userWalletId = address
 
   const { data } = useBalance({
     address: address,
+    watch: true,
   })
+
+  useEffect(() => {
+    if (data) {
+      setBalance(data)
+    }
+  },[data])
 
 
   return (
@@ -34,7 +42,7 @@ export const UserCard = ({openModal, style, shadow}) => {
         <div className='flex items-end justify-between'>
           <div className='flex items-center'>
             <h5 className='text-[#666] mr-[5px]'>Balance:</h5>
-            <h4 className='font-semibold'>{data?.formatted} {data?.symbol}</h4>
+            <h4 className='font-semibold'>{balance?.formatted.slice(0,7)} {balance?.symbol}</h4>
           </div>
           <Tooltip title="Buy tokens" enterDelay={1600} disableInteractive>
             <IconButton sx={{ width: '28px', height: '28px' }}>

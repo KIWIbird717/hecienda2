@@ -1,22 +1,18 @@
 import { Main } from './pages/Main'
-import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion';
-import { useSelector, useDispatch } from 'react-redux';
-import { setClientWallet } from './store/clientSlice'
+import { useDispatch } from 'react-redux';
+import { setClientProvider } from './store/clientSlice'
 import { EthereumClient, modalConnectors, walletConnectProvider } from '@web3modal/ethereum'
 import { Web3Button, Web3Modal, useWeb3ModalTheme } from '@web3modal/react'
 import { configureChains, createClient, WagmiConfig } from 'wagmi'
 import { useAccount } from 'wagmi'
-import { bsc } from 'wagmi/chains'
+import { bsc, polygonMumbai } from 'wagmi/chains'
 import CircularProgress from '@mui/material/CircularProgress';
 
 
-
 function App() {
-  const clientStore = useSelector(state => state.client.wallet)
   const dispatch = useDispatch()
-  const [signClient, setSignClient] = useState(null)
-  const chains = [bsc]
+  const chains = [polygonMumbai]
 
   // Configure theme
   const { setTheme } = useWeb3ModalTheme();
@@ -34,6 +30,7 @@ function App() {
     connectors: modalConnectors({ version: '1', appName: 'web3Modal', chains, projectId }),
     provider
   })
+  dispatch(setClientProvider({provider: wagmiClient.provider}))
 
   const CheckState = () => {
     const { isConnecting, isConnected } = useAccount()
@@ -102,7 +99,7 @@ function App() {
   }
 
   const ethereumClient = new EthereumClient(wagmiClient, chains)
-  console.log(wagmiClient)
+  console.log(wagmiClient.provider)
 
   return (
     <WagmiConfig client={wagmiClient}>

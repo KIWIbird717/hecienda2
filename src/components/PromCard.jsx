@@ -4,12 +4,15 @@ import { Button } from '@mui/material'
 import { useState, useEffect } from 'react'
 import walletSvg from '../media/wallet.svg'
 import stacking from '../media/stacking.svg'
-import { Tooltip } from '@mui/material';
+import { vesitngVaultClaim } from '../blockchain/vesting'
+import { useSelector } from 'react-redux'
+// import { useWaitForTransaction } from 'wagmi'
+
 
 const dummy = [
   {
     id: 1,
-    title: 'Buy Hecienda tokens',
+    title: 'Claim Hecienda tokens',
     paragraph: 'Purchase our tokens to work with the Hecienda service',
     image: walletSvg,
     button: true,
@@ -42,6 +45,8 @@ export const PromCard = () => {
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [grid, setGrid] = useState(gridHandler())
+  const provider = useSelector(state => state.client.provider)
+  const contractAddress = "0xaec5327093a0e3e3661dbf3ef9a0c7f45332cce7"
 
   useEffect(() => {
     window.addEventListener('resize', () => {
@@ -49,6 +54,15 @@ export const PromCard = () => {
       setGrid(gridHandler())
     })
   }, [window.innerWidth]);
+
+  // const { data, isError, isLoading } = useWaitForTransaction({
+  //   confirmations: 1,
+  //   hash: contractAddress,
+  //   onSuccess(data) {
+  //     console.log('Success', data)
+  //   },
+  // })
+  
 
   return (
     <div className='w-full mt-[50px]'>
@@ -63,7 +77,7 @@ export const PromCard = () => {
                   <h5 className='text-[#888]'>{item.paragraph}</h5>
                 </div>
                 {item.button ? (
-                  <Button sx={{ width: 'fit-content', padding: '10px 50px', color: 'white' }} color='primary' variant="contained">Withdraw</Button>
+                  <Button onClick={() => vesitngVaultClaim(contractAddress)} sx={{ width: 'fit-content', padding: '10px 50px', color: 'white' }} color='primary' variant="contained">Withdraw</Button>
                 ) : (
                   <Button disabled sx={{ width: 'fit-content', padding: '10px 50px', color: 'white' }} color='primary' variant="contained">Withdraw</Button>
                 )}

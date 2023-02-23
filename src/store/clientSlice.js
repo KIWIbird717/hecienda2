@@ -3,12 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 export const clientSlice = createSlice({
   name: 'client',
   initialState: {
-    wallet: null,
+    provider: null,
     clientDisconnect: null
   },
   reducers: {
-    setClientWallet: (state, action) => {
-      state.wallet = action.payload.wallet
+    setClientProvider: (state, action) => {
+      state.provider = action.payload.provider
     },
     setClientDisconnect: (state, action) => {
       state.clientDisconnect = action.payload.clientDisconnect
@@ -16,5 +16,5 @@ export const clientSlice = createSlice({
   }
 })
 
-export const { setClientWallet, setClientDisconnect } = clientSlice.actions
+export const { setClientProvider, setClientDisconnect } = clientSlice.actions
 export default clientSlice.reducer
