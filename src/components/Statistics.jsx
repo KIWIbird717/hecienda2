@@ -1,6 +1,6 @@
 import React from 'react'
 import Grid from '@mui/material/Grid';
-import { ListItemSecondaryAction } from '@mui/material';
+// import { ListItemSecondaryAction } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 
@@ -32,7 +32,6 @@ const dummy = [
 ]
 
 export const Statistics = ({ title }) => {
-
   const gridHandler = () => {
     if (windowWidth < 675) {
       return 6
@@ -49,7 +48,7 @@ export const Statistics = ({ title }) => {
       setWindowWidth(window.innerWidth)
       setGrid(gridHandler())
     })
-  }, [window.innerWidth]);
+  }, [window.innerWidth])
 
   return (
     <div className='mt-[50px]'>

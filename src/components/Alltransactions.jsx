@@ -20,7 +20,7 @@ export const Alltransactions = ({closeAllTransactions}) => {
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.2 }}
+      transition={{ duration: 0.1 }}
       style={{ top: `${window.pageYOffset}px` }}
       className='absolute w-full h-[100vh] left-0 bg-[rgba(0,0,0,.5)] overflow-hidden z-[10] flex items-center justify-center'
     >

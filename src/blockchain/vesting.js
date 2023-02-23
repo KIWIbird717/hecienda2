@@ -1,5 +1,5 @@
 import { ethers } from 'ethers';
-import arts from '../artifacts/contracts/vesting/VestingVault.sol/VestingVault.json';
+import arts from '../artifacts/contracts/vesting/LinearVestingVault.sol/LinearVestingVault.json';
 
 //tx
 async function vesitngVaultClaim(provider, contractAddress) {
@@ -108,15 +108,15 @@ async function getBeneficiary(provider, contractAddress) {
 
   async function getVestStartTimestamp(provider, contractAddress) {
 
-    const vesitngVault = new ethers.Contract(
-        contractAddress,
-        arts.abi,
-        provider
-      );
+
+    const contract = new ethers.Contract(
+      contractAddress,
+      arts.abi,
+      provider
+    );
   
-    const vestStartTimestamp = await vesitngVault.vestStartTimestamp();
-    
-    return vestStartTimestamp
+    const vestStartTimestamp = await contract.vestStartTimestamp();
+  console.log(vestStartTimestamp)
   }
 
   export {

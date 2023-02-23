@@ -7,6 +7,8 @@ import { TransactionCard } from "./TransactionCard";
 import { Statistics } from "./Statistics";
 import { PromCard } from "./PromCard";
 import { Alltransactions } from "./Alltransactions";
+import { BuyTokens } from "./BuyTokens";
+import { ModalDisconnect } from "./ModalDisconnect"
 
 export {
   Banner,
@@ -17,5 +19,7 @@ export {
   TransactionCard,
   Statistics,
   PromCard,
-  Alltransactions
+  Alltransactions,
+  BuyTokens,
+  ModalDisconnect,
 }

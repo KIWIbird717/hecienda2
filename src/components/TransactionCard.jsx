@@ -1,7 +1,7 @@
 import React from 'react'
 import eth from '../media/eth.svg'
 import { Divider } from '@mui/material'
-import { motion } from 'framer-motion'
+
 
 export const TransactionCard = ({ id, date, amount, animate }) => {
   return (

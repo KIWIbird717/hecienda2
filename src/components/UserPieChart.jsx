@@ -10,7 +10,7 @@ import { data } from '../data/pieChartData'
 // you'll often use just a few of them.
 
 
-export const UserPieChart = ({ /* see data tab */ }) => (
+export const UserPieChart = () => (
     <ResponsivePie
         data={data}
         margin={{ top: 15, right: 50, bottom: 15, left: 50 }}
