@@ -17,8 +17,8 @@ contract exchange is Ownable{
     uint min;
     //todo ограничение на количество
     mapping(address => bool) public whitelisted;
-    mapping (address => bool) public bought;
-    mapping (address => address) vault;
+    // mapping (address => bool) public bought;
+    // mapping (address => address) vault;
 
     event swap(address to, uint amount);
 
@@ -56,6 +56,10 @@ contract exchange is Ownable{
         return max;
     }
 
+    function isWhitelisted(address _address) public view returns (bool) {
+        return whitelisted[_address];
+    }
+
     modifier onlyWhitelisted {
         require(whitelisted[msg.sender] == true, "only Whitelisted");
         _;
@@ -73,12 +77,12 @@ contract exchange is Ownable{
     }
 
 
-    function buyTickets(uint amount) public onlyWhitelisted returns(address){
+    function buyTokens(uint amount) public onlyWhitelisted returns(address){
 
-        require(bought[msg.sender] == false, "already bought");
+        // require(bought[msg.sender] == false, "already bought");
         require(amount <= max, "too much");
         require(amount >= min, "too little");
-        bought[msg.sender] = true;
+        // bought[msg.sender] = true;
 
 
         
@@ -91,17 +95,17 @@ contract exchange is Ownable{
 
 
         token.approve(address(vesting), (amount) / 10 * 9);
-
+ 
 
         address vaultAddress = vesting.createVault(address(token), msg.sender, block.timestamp, block.timestamp + 365 days, (amount) / 10 * 9);
        
-       vault[msg.sender] = vaultAddress;
+    //    vault[msg.sender] = vaultAddress;
         emit swap(msg.sender, amount);
         return vaultAddress;
     } 
 
     function getUserVault(address _address) public view returns (address) {
-        return vault[_address];
+        // return vault[_address];
     }
 
     function withdrawall() external onlyOwner{

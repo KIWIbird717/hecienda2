@@ -30,7 +30,7 @@ const config: HardhatUserConfig = {
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
     bscMainnet: {
-      url: "https://bsc-dataseed.binance.org/",
+      url: "https://bsc-dataseed1.ninicoin.io",
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
@@ -40,7 +40,7 @@ const config: HardhatUserConfig = {
     // },
   },
   etherscan: {
-    apiKey: "AFEMDPHAWXPHKI8SQJK9AS77UIAZN9NGCN",
+    // apiKey: "AFEMDPHAWXPHKI8SQJK9AS77UIAZN9NGCN",
 
     // polygonMumbai: "AFEMDPHAWXPHKI8SQJK9AS77UIAZN9NGCN" ,
 
