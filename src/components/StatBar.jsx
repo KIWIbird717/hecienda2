@@ -4,16 +4,93 @@ import { Button } from '@mui/material'
 import { latestTransactionsData } from '../data/LatestTransactionDummy'
 import { List } from '@mui/material';
 import Link from '@mui/material/Link';
-import { data } from '../data/pieChartData'
 import EastRoundedIcon from '@mui/icons-material/EastRounded';
+import { vesitngVaultClaim } from '../blockchain/vesting'
+import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+import Slide from '@mui/material/Slide';
+import AlertTitle from '@mui/material/AlertTitle';
 
 
 export const StatBar = ({openAllTransactions, pieChart, shadow}) => {
+  const [isAlert, setAlert] = useState(false)
+  const contractAddress = useSelector(state => state.client.clientContractAddress)
+  const clientVesting = useSelector(state => state.client.clientVesting)
+  const [data, setData] = useState([
+    {
+      "id": "stacking",
+      "label": "stacking",
+      "value": null,
+      "color": "#80AB54"
+    },
+    {
+      "id": "vesting",
+      "label": "vesting",
+      "value": null,
+      "color": "#C0DF85"
+    },
+    {
+      "id": "avaliable",
+      "label": "avaliable",
+      "value": null,
+      "color": "#DB6C79"
+    },
+  ])
+
+  useEffect(() => {
+    setData([
+      {
+        "id": "stacking",
+        "label": "stacking",
+        "value": null,
+        "color": "#80AB54"
+      },
+      {
+        "id": "vesting",
+        "label": "vesting",
+        "value": clientVesting.origInvested,
+        "color": "#C0DF85"
+      },
+      {
+        "id": "avaliable",
+        "label": "avaliable",
+        "value": clientVesting.avaliable,
+        "color": "#DB6C79"
+      },
+    ])
+  }, [clientVesting])
+
+  const handleTransaction = async () => {
+    try {
+      const tr = await vesitngVaultClaim(contractAddress).then(res => res)
+
+    } catch(err) {
+      setAlert(true)
+      console.log(err)
+    }
+  }
+
+  function TransitionRight(props) {
+    return <Slide {...props} direction="left" />;
+  }
+
 
   return (
     <div
       className={`max-w-[440px] w-full rounded-[10px] bg-white ${shadow} p-[15px] overflow-hidden overflow-y-scroll no-scroll-bar flex flex-col justify-between`}
     >
+      <Snackbar 
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} 
+        open={isAlert} autoHideDuration={5000} 
+        onClose={() => setAlert(false)} 
+        TransitionComponent={TransitionRight} 
+      >
+        <Alert onClose={() => setAlert(false)} severity="error" sx={{ width: '100%' }}>
+          An error occurred while trying to transfer tokens
+        </Alert>
+      </Snackbar>
       <div>
         <h3 className='leading-[26px] font-semibold'>Balance usage</h3>
         <h4 className='text-[#666]'>Calculated by last activity</h4>
@@ -40,10 +117,10 @@ export const StatBar = ({openAllTransactions, pieChart, shadow}) => {
           </div>
         <div className='flex flex-col items-center mb-[15px]'>
           <h3 className='font-bold'>$1203</h3>
-          <h4 className='font-regular'>Available for withdraw</h4>
+          <h4 className='font-regular'>Available to withdraw from vesting</h4>
         </div>
         <div>
-          <Button onClick={() => console.log('hello')} sx={{ width: '100%', padding: '10px 10px', color: 'white' }} color='primary' variant="contained"><h4 className='text-white'>Withdraw funds</h4></Button>
+          <Button onClick={() => handleTransaction()} sx={{ width: '100%', padding: '10px 10px', color: 'white' }} color='primary' variant="contained"><h4 className='text-white'>Withdraw funds</h4></Button>
         </div>
       </div>
 

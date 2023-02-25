@@ -12,7 +12,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 function App() {
   const dispatch = useDispatch()
-  const chains = [polygonMumbai]
+  const chains = [bsc]
 
   // Configure theme
   const { setTheme } = useWeb3ModalTheme();
@@ -89,7 +89,6 @@ function App() {
                     </AnimatePresence>
                   )}
                 </div>
-                {/* <Disconnect /> */}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -99,7 +98,6 @@ function App() {
   }
 
   const ethereumClient = new EthereumClient(wagmiClient, chains)
-  console.log(wagmiClient.provider)
 
   return (
     <WagmiConfig client={wagmiClient}>

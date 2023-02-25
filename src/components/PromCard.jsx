@@ -9,44 +9,48 @@ import { useSelector } from 'react-redux'
 // import { useWaitForTransaction } from 'wagmi'
 
 
-const dummy = [
-  {
-    id: 1,
-    title: 'Claim Hecienda tokens',
-    paragraph: 'Purchase our tokens to work with the Hecienda service',
-    image: walletSvg,
-    button: true,
-  },
-  {
-    id: 2,
-    title: 'Invest tokents for vesting',
-    paragraph: 'Earn passive income in the form of rewards while keeping crypto assets safe',
-    image: stacking,
-    button: true,
-  },
-  {
-    id: 3,
-    title: 'Invest tokents for stacking',
-    paragraph: 'Earn passive income in the form of rewards while keeping crypto assets safe',
-    image: stacking,
-    buttin: false,
-  },
-]
-
-export const PromCard = () => {
+export const PromCard = ({ onOpenModal }) => {
 
   const gridHandler = () => {
     if (windowWidth < 740) {
       return 12
     } else {
-      return 4
+      return 6
     }
   }
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [grid, setGrid] = useState(gridHandler())
   const provider = useSelector(state => state.client.provider)
-  const contractAddress = "0xaec5327093a0e3e3661dbf3ef9a0c7f45332cce7"
+  const [dummy, setDummy] = useState([
+    {
+      id: 1,
+      title: 'Claim Hecienda tokens',
+      paragraph: 'Claim tokens',
+      image: walletSvg,
+      button: true,
+      buttonText: 'Withdraw',
+      onClick: onOpenModal
+    },
+    // {
+    //   id: 2,
+    //   title: 'Vesting',
+    //   paragraph: 'Claim HADA tokens from vesting. ',
+    //   image: stacking,
+    //   button: true,
+    //   buttonText: 'Withdraw',
+    //   onClick: () => console.log('clicked'),
+    // },
+    {
+      id: 3,
+      title: 'Invest tokents for stacking',
+      paragraph: 'Earn passive income in the form of rewards while keeping crypto assets safe',
+      image: stacking,
+      button: false,
+      buttonText: 'Withdraw',
+      onClick: () => console.log("clicked")
+    },
+  ])
 
   useEffect(() => {
     window.addEventListener('resize', () => {
@@ -77,9 +81,9 @@ export const PromCard = () => {
                   <h5 className='text-[#888]'>{item.paragraph}</h5>
                 </div>
                 {item.button ? (
-                  <Button onClick={() => vesitngVaultClaim(contractAddress)} sx={{ width: 'fit-content', padding: '10px 50px', color: 'white' }} color='primary' variant="contained">Withdraw</Button>
+                  <Button onClick={item.onClick} sx={{ width: 'fit-content', padding: '10px 50px', color: 'white' }} color='primary' variant="contained">{item.buttonText}</Button>
                 ) : (
-                  <Button disabled sx={{ width: 'fit-content', padding: '10px 50px', color: 'white' }} color='primary' variant="contained">Withdraw</Button>
+                  <Button disabled sx={{ width: 'fit-content', padding: '10px 50px', color: 'white' }} color='primary' variant="contained">{item.buttonText}</Button>
                 )}
               </div>
             </div>

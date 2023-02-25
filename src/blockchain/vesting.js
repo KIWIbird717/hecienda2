@@ -3,7 +3,11 @@ import arts from '../artifacts/contracts/vesting/LinearVestingVault.sol/LinearVe
 
 //tx
 const requestAccount = async () => {
-  await window.ethereum.request({ method: 'eth_requestAccounts' });
+  try {
+    await window.ethereum.request({ method: 'eth_requestAccounts' });
+  } catch(err) {
+    throw new Error(err)
+  }
 }
 
 async function vesitngVaultClaim(contractAddress) {
@@ -19,9 +23,13 @@ async function vesitngVaultClaim(contractAddress) {
         arts.abi,
         signer
       );
-  
-      const claim = await vesitngVault.claim(); // address, id
-      await claim.wait();
+    
+      try {
+        const claim = await vesitngVault.claim()
+        await claim.wait();
+      } catch(err) {
+        throw err
+      }
     }
   }
   
@@ -118,7 +126,6 @@ async function getBeneficiary(provider, contractAddress) {
 
   async function getVestStartTimestamp(provider, contractAddress) {
 
-
     const contract = new ethers.Contract(
       contractAddress,
       arts.abi,
@@ -126,7 +133,8 @@ async function getBeneficiary(provider, contractAddress) {
     );
   
     const vestStartTimestamp = await contract.vestStartTimestamp();
-  console.log(vestStartTimestamp)
+
+    return vestStartTimestamp
   }
 
   export {

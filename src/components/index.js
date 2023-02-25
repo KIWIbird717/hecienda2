@@ -9,6 +9,7 @@ import { PromCard } from "./PromCard";
 import { Alltransactions } from "./Alltransactions";
 import { BuyTokens } from "./BuyTokens";
 import { ModalDisconnect } from "./ModalDisconnect"
+import { ModalClaimTokens } from "./ModalClaimTokens";
 
 export {
   Banner,
@@ -22,4 +23,5 @@ export {
   Alltransactions,
   BuyTokens,
   ModalDisconnect,
+  ModalClaimTokens,
 }

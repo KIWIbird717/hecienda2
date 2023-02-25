@@ -1,4 +1,13 @@
-import { Banner, UserCard, StatBar, Statistics, PromCard, Alltransactions, ModalDisconnect } from '../components'
+import { 
+  Banner, 
+  UserCard, 
+  StatBar, 
+  Statistics, 
+  PromCard, 
+  Alltransactions, 
+  ModalDisconnect, 
+  ModalClaimTokens 
+} from '../components'
 import { React, useEffect } from 'react'
 import styles from '../styles'
 import Grid from '@mui/material/Grid';
@@ -14,6 +23,7 @@ export const Main = () => {
   const [modalDisconnect, setModalDisconnect] = useState(false)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [panel, setPanel] = useState(false)
+  const [modalClaimTokens, setModalClaimTokens] = useState(false)
 
   useEffect(() => {
     window.addEventListener('resize', () => {
@@ -60,6 +70,10 @@ export const Main = () => {
       </div>
 
       <AnimatePresence>
+        {modalClaimTokens && <ModalClaimTokens onCloseModal={() => setModalClaimTokens(false)}/>}
+      </AnimatePresence>
+
+      <AnimatePresence>
         {modalDisconnect ? <ModalDisconnect closeModalDisconnect={() => setModalDisconnect(false)}/> : null}
       </AnimatePresence>
 
@@ -77,7 +91,7 @@ export const Main = () => {
             <Banner />
             <Statistics title='Vesting statistics'/>
             {/* <Statistics title='Stacking statistics'/> */}
-            <PromCard />
+            <PromCard onOpenModal={() => {setPanel(false); setModalClaimTokens(true)}}/>
           </Grid>
           <Grid item xs={windowWidth < 1100 ? 0 : 3}>
             <div 

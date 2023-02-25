@@ -25,7 +25,12 @@ export const ModalDisconnect = ({ closeModalDisconnect }) => {
       className='absolute w-full h-[100vh] left-0 bg-[rgba(0,0,0,.5)] overflow-hidden z-[10] flex items-center justify-center'
     >
       <ClickAwayListener onClickAway={closeModalDisconnect}>
-        <motion.div className="w-[330px] h-[380px] bg-white rounded-[10px] py-[50px] px-[30px] flex flex-col items-center justify-center">
+        <motion.div 
+          initial={{ scale: 0, x: 400, y: -300 }}
+          animate={{ scale: 1, x: 0, y: 0 }}
+          transition={{ duration: 0.2, type: 'easeIn' }}
+          className="w-[330px] h-[380px] bg-white rounded-[10px] py-[50px] px-[30px] flex flex-col items-center justify-center"
+        >
           <motion.h3 className='font-semibold text-center mb-[25px]'>Disconnect from session?</motion.h3>
           <motion.h5 className="text-center mb-[25px]">Are you sure you want to disconnect from this session? You can come back anytime.</motion.h5>
           <motion.div className="flex">
