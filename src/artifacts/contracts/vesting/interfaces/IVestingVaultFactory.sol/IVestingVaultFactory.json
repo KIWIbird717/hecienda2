@@ -1,0 +1,41 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IVestingVaultFactory",
+  "sourceName": "contracts/vesting/interfaces/IVestingVaultFactory.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "InvalidParams",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "beneficiary",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "vault",
+          "type": "address"
+        }
+      ],
+      "name": "VaultCreated",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

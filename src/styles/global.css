@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
+
+h1 {
+  font-size: 74px;
+  line-height: 80px;
+  font-family: 'Inter', sans-serif;
+  color: rgba(0, 0, 40, 0.75);
+}
+h2 {
+  font-size: 40px;
+  line-height: 40px;
+  font-family: 'Inter', sans-serif;
+  color: rgba(0, 0, 40, 0.75);
+}
+h3 {
+  font-size: 25px;
+  line-height: 25px;
+  font-family: 'Inter', sans-serif;
+  color: rgba(0, 0, 40, 0.75);
+}
+h4 {
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+  color: rgba(0, 0, 40, 0.75);
+}
+h5 {
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  color: rgba(0, 0, 40, 0.75);
+}
+h6 {
+  font-size: 11px;
+  font-family: 'Inter', sans-serif;
+  color: rgba(0, 0, 40, 0.75);
+}
+.h7 {
+  font-size: 36px;
+  font-family: 'Inter', sans-serif;
+  color: rgba(0, 0, 40, 0.75);
+}
+
+
+  /* хром, сафари */
+.no-scroll-bar::-webkit-scrollbar { width: 0; }
+
+/* ie 10+ */
+.no-scroll-bar { -ms-overflow-style: none; }
+
+/* фф (свойство больше не работает, других способов тоже нет)*/
+.no-scroll-bar { overflow: -moz-scrollbars-none; }
+
+
+@media (max-width: 1615px) {
+  h1 {
+    font-size: 65px;
+  }
+  h2 {
+    font-size: 35px;
+    line-height: 35px;
+  }
+  h3 {
+    font-size: 20px;
+    line-height: 20px;
+  }
+  h4 {
+    font-size: 16px;
+  }
+  h6 {
+    font-size: 9px;
+  }
+  .h7 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 1375px) {
+  h3 {
+    font-size: 18px;
+    line-height: 18px;
+  }
+  h4 {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1265px) {
+  h1 {
+    font-size: 55px;
+  }
+  h2 {
+    font-size: 28px;
+    line-height: 28px;
+  }
+  h3 {
+    font-size: 16px;
+    line-height: 16px;
+  }
+  h4 {
+    font-size: 12px;
+  }
+  h5 {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 1200px) {
+  h1 {
+    font-size: 45px;
+    line-height: 45px;
+  }
+  h2 {
+    font-size: 25px;
+    line-height: 25px;
+  }
+  h3 {
+    font-size: 14px;
+    line-height: 14px;
+  }
+  h6 {
+    font-size: 6px;
+  }
+}
+
+@media (max-width: 1099px) {
+  h1 {
+    font-size: 50px;
+  }
+
+  h2 {
+    font-size: 30px;
+    line-height: 30px;
+  }
+  h3 {
+    font-size: 20px;
+    line-height: 20px;
+  }
+  h4 {
+    font-size: 16px;
+  }
+  h5 {
+    font-size: 14px;
+  }
+  h6 {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 860px) {
+  h1 {
+    font-size: 45px;
+    line-height: 50px;
+  }
+  h2 {
+    font-size: 25px;
+    line-height: 25px;
+  }
+  h4 {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 578px) {
+  h1 {
+    font-size: 38px;
+    line-height: 40px;
+  }
+}
+
+@media (max-width: 384px) {
+  h1 {
+    font-size: 35px;
+    line-height: 38px;
+  }
+}
+
+@media (max-width: 360px) {
+  h2 {
+    font-size: 20px;
+    line-height: 20px;
+  }
+}
